@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link href="http://192.168.1.129:8080/admin/css/css.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<form action="http://192.168.1.129:8080/LoginAction" method="post" id="form">
+    <table class="tabAdd" cellspacing="1px" cellpadding="0">
+        <tr>
+            <th class="item" >登录接口：</th>
+            <td class="content"colspan="2">http://192.168.1.129:8080/LoginAction</td>
+        </tr>
+        <tr>
+            <th class="item" >访问方式：</th>
+            <td class="content"colspan="2">POST</td>
+        </tr>
+        <tr>
+            <th class="item"><span class="force">*</span>用户名：</th>
+            <td class="fieldName">userName</td>
+            <td class="content">
+                <input value="admin" TYPE="text" name="userName" size="50"/>
+            </td>
+        </tr>
+        <tr>
+            <th class="item"><span class="force">*</span>密码：</th>
+            <td class="fieldName">password</td>
+            <td class="content">
+                <input value="12345" TYPE="text" name="password" size="50"/>
+                <input type="submit" value="submit">
+            </td>
+        </tr>
+    </table>
+    <br/><br/>
+</form>
+
+</body>
+</html>
