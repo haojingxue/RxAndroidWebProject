@@ -1,6 +1,8 @@
 package com.mm.cme.rx_android_web_project.action;
 
-import com.mm.cme.rx_android_web_project.bean.ResultBean;
+import com.mm.cme.rx_android_web_project.bean.StateBean;
+import com.mm.cme.rx_android_web_project.bean.UserInfoBean;
+import com.mm.cme.rx_android_web_project.constants.StateE;
 import net.sf.json.JSONSerializer;
 
 import javax.servlet.ServletException;
@@ -44,17 +46,22 @@ public class LoginAction extends HttpServlet {
         System.out.println("--username->>" + userName);
         System.out.println("--password->>" + password);
 
-        ResultBean result = new ResultBean();
-        HashMap<String, ResultBean> map = new HashMap<>();
+        UserInfoBean userInfo = new UserInfoBean();
+        StateBean state = new StateBean();
+        HashMap<String, Object> map = new HashMap<>();
         if ("admin".equals(userName) && "12345".equals(password)) {
-            result.setResultCode(1);
-            result.setResultMsg("success");
+
+            state.setStateCode(StateE.SUCCESS);
+            state.setStateMessage("登陆成功");
+
+            userInfo.setUserName("admin");
+            userInfo.setPassword("12345");
+            map.put("userInfo", userInfo);
         } else {
-            result.setResultCode(-1);
-            result.setResultMsg("登录失败！");
-//            result.setResultMsg("登录失败！" + "--username->>" + userName + "--password->>" + password);
+            state.setStateCode(StateE.ERROR);
+            state.setStateMessage("用户名或密码错误!");
         }
-        map.put("result", result);
+        map.put("state", state);
         String json_value = JSONSerializer.toJSON(map).toString();
         writer.print(json_value);
         writer.flush();
