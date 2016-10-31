@@ -4,7 +4,7 @@ import java.sql.*;  // for standard JDBC programs
 import java.math.*; // for BigDecimal and BigInteger support
 
 /**
- * Descriptions：
+ * Descriptions：数据库工具类
  * <p>
  * Author：ChenME
  * Date：10/27/2016

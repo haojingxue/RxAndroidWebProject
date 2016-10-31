@@ -3,7 +3,7 @@ package com.mm.cme.rx_android_web_project.bean;
 import com.mm.cme.rx_android_web_project.constants.StateE;
 
 /**
- * Descriptions：
+ * Descriptions：状态的Bean
  * <p>
  * Author：ChenME
  * Date：10/28/2016

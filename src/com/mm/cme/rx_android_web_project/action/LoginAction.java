@@ -3,6 +3,9 @@ package com.mm.cme.rx_android_web_project.action;
 import com.mm.cme.rx_android_web_project.bean.StateBean;
 import com.mm.cme.rx_android_web_project.bean.UserInfoBean;
 import com.mm.cme.rx_android_web_project.constants.StateE;
+import com.mm.cme.rx_android_web_project.server.LoginServer;
+import com.mm.cme.rx_android_web_project.utils.StringUtils;
+import net.sf.json.JSONObject;
 import net.sf.json.JSONSerializer;
 
 import javax.servlet.ServletException;
@@ -33,36 +36,22 @@ public class LoginAction extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //处理客户的post请求
+        //字符集设置
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=utf-8");
 
-        PrintWriter writer = response.getWriter();
+        //解析
+        JSONObject jsonObj = StringUtils.decodeHttpRequest2JSONObject(request);
+        String userName = jsonObj.getString("userName");
+        String password = jsonObj.getString("password");
 
-        String userName = request.getParameter("userName");
-        String password = request.getParameter("password");
+        //创建变量
+        HashMap<String, Object> map = new LoginServer().checkUserValidity(userName, password);
 
-        System.out.println("--username->>" + userName);
-        System.out.println("--password->>" + password);
-
-        UserInfoBean userInfo = new UserInfoBean();
-        StateBean state = new StateBean();
-        HashMap<String, Object> map = new HashMap<>();
-        if ("admin".equals(userName) && "12345".equals(password)) {
-
-            state.setStateCode(StateE.SUCCESS);
-            state.setStateMessage("登陆成功");
-
-            userInfo.setUserName("admin");
-            userInfo.setPassword("12345");
-            map.put("userInfo", userInfo);
-        } else {
-            state.setStateCode(StateE.ERROR);
-            state.setStateMessage("用户名或密码错误!");
-        }
-        map.put("state", state);
         String json_value = JSONSerializer.toJSON(map).toString();
+
+        PrintWriter writer = response.getWriter();
         writer.print(json_value);
         writer.flush();
         writer.close();

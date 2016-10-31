@@ -1,7 +1,7 @@
 package com.mm.cme.rx_android_web_project.db;
 
 /**
- * Descriptions：
+ * Descriptions：配置文件
  * <p>
  * Author：ChenME
  * Date：10/27/2016
@@ -21,8 +21,15 @@ public class Config {
     static {
         //数据库连接
         DB_DRIVER = "com.mysql.jdbc.Driver";
-        DB_URI = "jdbc:mysql://localhost:3306/Employees?characterEncoding=utf8";
+        DB_URI = "jdbc:mysql://localhost:3306/MyCompany?characterEncoding=utf8";
         DB_USER = "root";
         DB_PASS = "123456";
+
+
+        //home MySql
+//        DB_DRIVER = "com.mysql.jdbc.Driver";
+//        DB_URI = "jdbc:mysql://localhost:3306/MyCompany?characterEncoding=utf8";
+//        DB_USER = "root";
+//        DB_PASS = "root";
     }
 }
