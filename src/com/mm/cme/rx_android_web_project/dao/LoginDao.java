@@ -35,6 +35,7 @@ public class LoginDao {
 
             if (rs.next()) {
                 rs.previous();
+                boolean isHasThisUser = false;
                 while (rs.next()) {
                     String passwordFromDB = rs.getString("password");
                     if (password.equals(passwordFromDB)) {
@@ -43,13 +44,17 @@ public class LoginDao {
                         map.put("userInfo", userInfo);
                         state.setStateCode(StateE.SUCCESS);
                         state.setStateMessage("登陆成功！");
+                        isHasThisUser = true;
                         break;
                     }
                 }
+                if (!isHasThisUser) {
+                    state.setStateCode(StateE.ERROR);
+                    state.setStateMessage("密码错误!");
+                }
             } else {
                 state.setStateCode(StateE.ERROR);
-                state.setStateMessage("用户名或密码错误!");
-//                state.setStateMessage("抱歉！您还尚未注册！");
+                state.setStateMessage("抱歉！您还尚未注册！");
             }
             rs.close();
             stat.close();
