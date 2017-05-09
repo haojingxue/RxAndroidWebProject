@@ -29,13 +29,13 @@ public class StringUtils {
         if (jsonStr == null) {
             jsonStr = (String) request.getAttribute(PARAMETER_KEY);
         }
-        CommUtils.p("StringUtil工具json(未解码)~~"+jsonStr);
-        AESUtils en = new AESUtils();
-        try {
-            jsonStr = en.Decrypt(jsonStr);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        CommUtils.p("StringUtil工具json(未解码)~~"+jsonStr);
+//        AESUtils en = new AESUtils();
+//        try {
+//            jsonStr = en.Decrypt(jsonStr);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
         CommUtils.p("StringUtil工具json(已解密)~~"+jsonStr);
         JSONObject obj = JSONObject.fromObject(jsonStr);
         return obj;

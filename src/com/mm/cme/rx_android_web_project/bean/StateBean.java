@@ -47,4 +47,12 @@ public class StateBean {
     public String getStateMessage() {
         return stateMessage;
     }
+
+    @Override
+    public String toString() {
+        return "StateBean{" +
+                "stateCode='" + stateCode + '\'' +
+                ", stateMessage='" + stateMessage + '\'' +
+                '}';
+    }
 }

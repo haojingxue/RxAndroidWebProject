@@ -54,6 +54,11 @@ public class DBUtils {
      */
     private void createConnection() {
         try {
+            try {
+                Class.forName(driver);
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
             conn = DriverManager.getConnection(uri, user, pwd);
         } catch (SQLException e) {
             e.printStackTrace();

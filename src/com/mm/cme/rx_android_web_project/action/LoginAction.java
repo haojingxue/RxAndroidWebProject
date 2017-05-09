@@ -43,8 +43,11 @@ public class LoginAction extends HttpServlet {
 
         //解析
         JSONObject jsonObj = StringUtils.decodeHttpRequest2JSONObject(request);
-        String userName = jsonObj.getString("userName");
-        String password = jsonObj.getString("password");
+//        String userName = jsonObj.getString("userName");
+//        String password = jsonObj.getString("password");
+
+        String userName =  request.getParameter("userName");
+        String password = request.getParameter("password");
 
         //创建变量
         HashMap<String, Object> map = new LoginServer().checkUserValidity(userName, password);

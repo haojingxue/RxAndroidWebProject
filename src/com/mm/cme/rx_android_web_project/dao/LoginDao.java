@@ -3,6 +3,7 @@ package com.mm.cme.rx_android_web_project.dao;
 import com.mm.cme.rx_android_web_project.bean.StateBean;
 import com.mm.cme.rx_android_web_project.bean.UserInfoBean;
 import com.mm.cme.rx_android_web_project.constants.StateE;
+import com.mm.cme.rx_android_web_project.utils.CommUtils;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -26,7 +27,7 @@ public class LoginDao {
         UserInfoBean userInfo = new UserInfoBean();
         StateBean state = new StateBean();
 
-        String sql = "SELECT * FROM Employees WHERE userName = ?";
+        String sql = "SELECT * FROM employees WHERE userName = ?";
         PreparedStatement stat = null;
         try {
             stat = conn.prepareStatement(sql);
@@ -65,6 +66,8 @@ public class LoginDao {
         }
 
         map.put("state", state);
+
+        CommUtils.p("结果~~"+state.toString());
         return map;
     }
 }

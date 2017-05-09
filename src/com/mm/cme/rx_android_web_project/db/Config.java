@@ -21,9 +21,14 @@ public class Config {
     static {
         //数据库连接
         DB_DRIVER = "com.mysql.jdbc.Driver";
-        DB_URI = "jdbc:mysql://localhost:3306/MyCompany?characterEncoding=utf8";
-        DB_USER = "root";
-        DB_PASS = "123456";
+        DB_URI = "jdbc:mysql://outwuliupai.mysql.rds.aliyuncs.com:3306/testdb?characterEncoding=utf8";
+        DB_USER = "chenmengen";
+        DB_PASS = "MyalyDBKey1210";
+
+//        DB_DRIVER = "com.mysql.jdbc.Driver";
+//        DB_URI = "jdbc:mysql://localhost:3306/mm_db?characterEncoding=utf8";
+//        DB_USER = "root";
+//        DB_PASS = "root";
 
 
         //home MySql
